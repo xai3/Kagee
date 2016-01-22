@@ -13,6 +13,7 @@ class MockinTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+//        MockProtocol.register()
     }
     
     override func tearDown() {
@@ -24,6 +25,24 @@ class MockinTests: XCTestCase {
         XCTAssertEqual(Mock.pool.count, 1)
         mock.down()
         XCTAssertEqual(Mock.pool.count, 0)
+    }
+    
+    func testRequest() {
+        let ex = expectationWithDescription("")
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        config.protocolClasses = ([MockProtocol.self] as [AnyClass]) + (config.protocolClasses ?? [])
+        let request = NSURLRequest(URL: NSURL(string: "https//google.co.jp")!)
+        let session = NSURLSession(configuration: config)
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            print(data)
+            
+            ex.fulfill()
+        }
+        task.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in
+        }
     }
     
 }
