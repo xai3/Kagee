@@ -21,21 +21,26 @@ class MockinTests: XCTestCase {
     }
     
     func testUpDown() {
+        let initialCount = Mock.pool.count
         let mock = Mock.up()
-        XCTAssertEqual(Mock.pool.count, 1)
+        XCTAssertEqual(Mock.pool.count, initialCount + 1)
         mock.down()
-        XCTAssertEqual(Mock.pool.count, 0)
+        XCTAssertEqual(Mock.pool.count, initialCount)
     }
     
     func testRequest() {
         let ex = expectationWithDescription("")
         
+        Mock.up().request(url: "/").response(300, data: nil, header: nil)
+        
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let request = NSURLRequest(URL: NSURL(string: "https//google.co.jp")!)
+        let request = NSURLRequest(URL: NSURL(string: "/")!)
         let session = NSURLSession(configuration: config)
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            print(data)
-            
+            guard let httpResponse = response as? NSHTTPURLResponse else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 500)
             ex.fulfill()
         }
         task.resume()

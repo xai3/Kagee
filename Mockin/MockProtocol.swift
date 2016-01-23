@@ -27,6 +27,17 @@ public class MockProtocol: NSURLProtocol {
     }
     
     public override func startLoading() {
+        let mock = Mock.pool.filter {
+            return ($0.request?.URL?.host == request.URL?.host)
+            }.last
+        
+        if let response = mock?.response {
+            client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
+        }
+        if let data = mock?.data {
+            client?.URLProtocol(self, didLoadData: data)
+        }
+        client?.URLProtocolDidFinishLoading(self)
     }
     
     public override func stopLoading() {
