@@ -14,6 +14,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     var request: NSURLRequest?
     var response: NSURLResponse?
     var data: NSData?
+    var error: NSError?
     
     public class func up() -> Mock {
         let mock = Mock()
@@ -38,7 +39,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
         return self
     }
 
-    public func response(statusCode: Int, data: NSData?, header: [String: String]?) -> MockResponseType {
+    public func response(statusCode: Int, data: NSData? = nil, header: [String: String]? = nil) -> MockResponseType {
         guard let url = request?.URL,
             let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
                 fatalError()
@@ -46,9 +47,23 @@ public class Mock: MockType, MockRequestType, MockResponseType {
         return response(res, data: data)
     }
     
-    public func response(response: NSURLResponse, data: NSData?) -> MockResponseType {
+    public func response(statusCode: Int, json: AnyObject, header: [String: String]? = nil) -> MockResponseType {
+        do {
+            let data = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+            return response(statusCode, data: data, header: header)
+        } catch {
+            return response(error as NSError)
+        }
+    }
+    
+    public func response(response: NSURLResponse, data: NSData? = nil) -> MockResponseType {
         self.response = response
         self.data = data
+        return self
+    }
+    
+    public func response(error: NSError) -> MockResponseType {
+        self.error = error
         return self
     }
 }
@@ -60,7 +75,9 @@ public protocol MockType: class {
 
 public protocol MockRequestType: class {
     func response(statusCode: Int, data: NSData?, header: [String: String]?) -> MockResponseType
+    func response(statusCode: Int, json: AnyObject, header: [String: String]?) -> MockResponseType
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
+    func response(error: NSError) -> MockResponseType
 }
 
 public protocol MockResponseType: class {

@@ -28,22 +28,75 @@ class MockinTests: XCTestCase {
         XCTAssertEqual(Mock.pool.count, initialCount)
     }
     
-    func testRequest() {
+    func testGetRequest() {
         let ex = expectationWithDescription("")
         
-        Mock.up().request(url: "/").response(300, data: nil, header: nil)
+        let url = "/"
+        Mock.up().request(url: url).response(200, data: nil, header: nil)
         
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let request = NSURLRequest(URL: NSURL(string: "/")!)
-        let session = NSURLSession(configuration: config)
-        let task = session.dataTaskWithRequest(request) { data, response, error in
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
             guard let httpResponse = response as? NSHTTPURLResponse else {
                 fatalError()
             }
-            XCTAssertEqual(httpResponse.statusCode, 500)
+            XCTAssertEqual(httpResponse.statusCode, 200)
             ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in
         }
-        task.resume()
+    }
+    
+    func testGetJSON() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/json"
+        let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
+        Mock.up().request(url: url).response(200, json: json, header: nil)
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            guard let httpResponse = response as? NSHTTPURLResponse, let responseData = data else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 200)
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(responseData, options: .AllowFragments)
+                let dic = json as? [String: AnyObject]
+                XCTAssertNotNil(dic)
+                XCTAssertEqual(dic?["name"] as? String, "yukiasai")
+                XCTAssertEqual(dic?["age"] as? Int, 28)
+            } catch {
+                fatalError()
+            }
+            
+            ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in
+        }
+    }
+    
+    func testGetError() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/error"
+        let error = NSError(domain: "yukiasai.Mockin", code: 1000, userInfo: nil)
+        Mock.up().request(url: url).response(error)
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            XCTAssertNil(data)
+            XCTAssertNil(response)
+            XCTAssertNotNil(error)
+            XCTAssertEqual(error?.domain, "yukiasai.Mockin")
+            XCTAssertEqual(error?.code, 1000)
+            ex.fulfill()
+        }.resume()
         
         waitForExpectationsWithTimeout(1000) { error in
         }

@@ -9,17 +9,20 @@
 import Foundation
 
 public class MockProtocol: NSURLProtocol {
+    static var token: dispatch_once_t = 0
     public class func register() {
-        NSURLProtocol.registerClass(self)
-        
-        let configClass = NSURLSessionConfiguration.self
-        let originalMethod = class_getClassMethod(configClass, Selector("defaultSessionConfiguration"))
-        let swizzledMethod = class_getClassMethod(configClass, Selector("mockSessionCongiguration"))
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        dispatch_once(&token) {
+            NSURLProtocol.registerClass(self)
+            
+            let configClass = NSURLSessionConfiguration.self
+            let originalMethod = class_getClassMethod(configClass, Selector("defaultSessionConfiguration"))
+            let swizzledMethod = class_getClassMethod(configClass, Selector("mockSessionCongiguration"))
+            method_exchangeImplementations(originalMethod, swizzledMethod)
+        }
     }
     
     public override class func canInitWithRequest(request: NSURLRequest) -> Bool {
-        return true
+        return targetMock(request) != nil
     }
     
     public override class func canonicalRequestForRequest(request: NSURLRequest) -> NSURLRequest {
@@ -27,20 +30,34 @@ public class MockProtocol: NSURLProtocol {
     }
     
     public override func startLoading() {
-        let mock = Mock.pool.filter {
-            return ($0.request?.URL?.host == request.URL?.host)
-            }.last
+        guard let mock = MockProtocol.targetMock(request) else {
+            // Should nonnull is returned by the canInitWithRequest
+            fatalError()
+        }
         
-        if let response = mock?.response {
+        if let error = mock.error {
+            client?.URLProtocol(self, didFailWithError: error)
+            return
+        }
+        
+        if let response = mock.response {
             client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
         }
-        if let data = mock?.data {
+        if let data = mock.data {
             client?.URLProtocol(self, didLoadData: data)
         }
         client?.URLProtocolDidFinishLoading(self)
     }
     
     public override func stopLoading() {
+    }
+    
+    private class func targetMock(request: NSURLRequest) -> Mock? {
+        return Mock.pool.filter {
+            let mockURL = $0.request?.URL
+            let requestURL = request.URL
+            return (mockURL?.host == requestURL?.host) && (mockURL?.path == requestURL?.path)
+            }.last
     }
 }
 
