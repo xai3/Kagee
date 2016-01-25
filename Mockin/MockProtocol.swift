@@ -35,22 +35,22 @@ public class MockProtocol: NSURLProtocol {
             fatalError()
         }
         
-        if let error = mock.error {
-            client?.URLProtocol(self, didFailWithError: error)
-            return
-        }
         
         guard let response = mock.response else {
             fatalError()
         }
         
-        if let urlResponse = response.response {
-            client?.URLProtocol(self, didReceiveResponse: urlResponse, cacheStoragePolicy: .NotAllowed)
+        switch response {
+        case .Failure(let error):
+            client?.URLProtocol(self, didFailWithError: error)
+            return
+        case .Success(let response, let data):
+            client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
+            if let d = data {
+                client?.URLProtocol(self, didLoadData: d)
+            }
+            client?.URLProtocolDidFinishLoading(self)
         }
-        if let data = response.data {
-            client?.URLProtocol(self, didLoadData: data)
-        }
-        client?.URLProtocolDidFinishLoading(self)
     }
     
     public override func stopLoading() {

@@ -102,14 +102,14 @@ class MockinTests: XCTestCase {
         }
     }
     
-    func testRequestHandler() {
+    func testRequestHandlerSuccess() {
         let ex = expectationWithDescription("")
         
-        let url = "/handler"
-        Mock.up().request(url: url).response { Void -> Mock.Response in
-            let response = NSHTTPURLResponse(URL: NSURL(string: url)!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
+        let url = "/handler_success"
+        Mock.up().request(url: url).response { Void -> Response in
+            let response = NSHTTPURLResponse(URL: NSURL(string: url)!, statusCode: 200, HTTPVersion: nil, headerFields: nil)!
             let data = "12345".dataUsingEncoding(NSUTF8StringEncoding)
-            return (response, data)
+            return .Success(response, data)
         }
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
@@ -124,8 +124,30 @@ class MockinTests: XCTestCase {
             ex.fulfill()
         }.resume()
         
-        waitForExpectationsWithTimeout(1000) { error in
+        waitForExpectationsWithTimeout(1000) { error in }
+    }
+    
+    func testRequestHandlerFailure() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/handler_failure"
+        Mock.up().request(url: url).response { Void -> Response in
+            let error = NSError(domain: "yukiasai.Mockin", code: 2000, userInfo: nil)
+            return .Failure(error)
         }
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            XCTAssertNil(data)
+            XCTAssertNil(response)
+            XCTAssertNotNil(error)
+            XCTAssertEqual(error?.domain, "yukiasai.Mockin")
+            XCTAssertEqual(error?.code, 2000)
+            ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in }
     }
     
 }
