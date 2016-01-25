@@ -12,6 +12,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias Response = (response: NSURLResponse?, data: NSData?)
     public typealias ResponseHandler = Void -> Response
+    public typealias ErrorHandler = Void -> NSError
     
     static var pool = [Mock]()
     
@@ -25,7 +26,10 @@ public class Mock: MockType, MockRequestType, MockResponseType {
         return responseHandler?()
     }
     
-    var error: NSError?
+    var errorHandler: ErrorHandler?
+    var error: NSError? {
+        return errorHandler?()
+    }
 }
 
 extension Mock {
@@ -91,7 +95,12 @@ extension Mock {
 
 extension Mock {
     public func response(error: NSError) -> MockResponseType {
-        self.error = error
+        let handler: ErrorHandler = { return error }
+        return self.response(handler)
+    }
+    
+    public func response(handler: ErrorHandler) -> MockResponseType {
+        errorHandler = handler
         return self
     }
 }
@@ -107,6 +116,7 @@ public protocol MockRequestType: class {
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
     func response(handler: Mock.ResponseHandler) -> MockResponseType
     func response(error: NSError) -> MockResponseType
+    func response(handler: Mock.ErrorHandler) -> MockResponseType
 }
 
 public protocol MockResponseType: class {
