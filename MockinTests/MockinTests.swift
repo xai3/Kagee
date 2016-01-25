@@ -106,8 +106,8 @@ class MockinTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/handler_success"
-        Mock.up().request(url: url).response { Void -> Response in
-            let response = NSHTTPURLResponse(URL: NSURL(string: url)!, statusCode: 200, HTTPVersion: nil, headerFields: nil)!
+        Mock.up().request(url: url).response { request -> Response in
+            let response = NSHTTPURLResponse(URL: request.URL!, statusCode: 200, HTTPVersion: nil, headerFields: nil)!
             let data = "12345".dataUsingEncoding(NSUTF8StringEncoding)
             return .Success(response, data)
         }
@@ -131,7 +131,7 @@ class MockinTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/handler_failure"
-        Mock.up().request(url: url).response { Void -> Response in
+        Mock.up().request(url: url).response { _ -> Response in
             let error = NSError(domain: "yukiasai.Mockin", code: 2000, userInfo: nil)
             return .Failure(error)
         }

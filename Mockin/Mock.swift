@@ -10,7 +10,7 @@ import Foundation
 
 public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
-    public typealias ResponseHandler = Void -> Response
+    public typealias ResponseHandler = NSURLRequest -> Response
     
     static var pool = [Mock]()
     
@@ -21,7 +21,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     
     var responseHandler: ResponseHandler?
     var response: Response? {
-        return responseHandler?()
+        return responseHandler?(request!)
     }
 }
 
@@ -76,12 +76,12 @@ extension Mock {
     }
     
     public func response(response: NSURLResponse, data: NSData? = nil) -> MockResponseType {
-        let handler: ResponseHandler = { return .Success(response, data) }
+        let handler: ResponseHandler = { _ in return .Success(response, data) }
         return self.response(handler)
     }
     
     public func response(error: NSError) -> MockResponseType {
-        let handler: ResponseHandler = { return .Failure(error) }
+        let handler: ResponseHandler = { _ in return .Failure(error) }
         return self.response(handler)
     }
     
