@@ -102,4 +102,30 @@ class MockinTests: XCTestCase {
         }
     }
     
+    func testRequestHandler() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/handler"
+        Mock.up().request(url: url).response { Void -> Mock.Response in
+            let response = NSHTTPURLResponse(URL: NSURL(string: url)!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
+            let data = "12345".dataUsingEncoding(NSUTF8StringEncoding)
+            return (response, data)
+        }
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            guard let httpResponse = response as? NSHTTPURLResponse, let responseData = data else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 200)
+            XCTAssertEqual(responseData.length, 5)
+            
+            ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in
+        }
+    }
+    
 }

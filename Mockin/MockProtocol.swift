@@ -40,10 +40,14 @@ public class MockProtocol: NSURLProtocol {
             return
         }
         
-        if let response = mock.response {
-            client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
+        guard let response = mock.response else {
+            fatalError()
         }
-        if let data = mock.data {
+        
+        if let urlResponse = response.response {
+            client?.URLProtocol(self, didReceiveResponse: urlResponse, cacheStoragePolicy: .NotAllowed)
+        }
+        if let data = response.data {
             client?.URLProtocol(self, didLoadData: data)
         }
         client?.URLProtocolDidFinishLoading(self)

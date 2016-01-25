@@ -9,13 +9,26 @@
 import Foundation
 
 public class Mock: MockType, MockRequestType, MockResponseType {
+    public typealias RequestHandler = Void -> NSURLRequest
+    public typealias Response = (response: NSURLResponse?, data: NSData?)
+    public typealias ResponseHandler = Void -> Response
+    
     static var pool = [Mock]()
     
-    var request: NSURLRequest?
-    var response: NSURLResponse?
-    var data: NSData?
-    var error: NSError?
+    var requestHandler: RequestHandler?
+    var request: NSURLRequest? {
+        return requestHandler?()
+    }
     
+    var responseHandler: ResponseHandler?
+    var response: Response? {
+        return responseHandler?()
+    }
+    
+    var error: NSError?
+}
+
+extension Mock {
     public class func up() -> Mock {
         let mock = Mock()
         pool += [mock]
@@ -27,7 +40,9 @@ public class Mock: MockType, MockRequestType, MockResponseType {
             Mock.pool.removeAtIndex(index)
         }
     }
-    
+}
+
+extension Mock {
     public func request(url urlConvertible: URLConvertible, method: Method = .GET) -> MockRequestType {
         let req = NSMutableURLRequest(URL: urlConvertible.URL)
         req.HTTPMethod = method.rawValue
@@ -35,10 +50,17 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     }
     
     public func request(request: NSURLRequest) -> MockRequestType {
-        self.request = request
+        let handler: RequestHandler = { return request }
+        return self.request(handler)
+    }
+    
+    public func request(handler: RequestHandler) -> MockRequestType {
+        requestHandler = handler
         return self
     }
+}
 
+extension Mock {
     public func response(statusCode: Int, data: NSData? = nil, header: [String: String]? = nil) -> MockResponseType {
         guard let url = request?.URL,
             let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
@@ -57,11 +79,17 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     }
     
     public func response(response: NSURLResponse, data: NSData? = nil) -> MockResponseType {
-        self.response = response
-        self.data = data
-        return self
+        let handler: ResponseHandler = { return (response, data) }
+        return self.response(handler)
     }
     
+    public func response(handler: ResponseHandler) -> MockResponseType {
+        responseHandler = handler
+        return self
+    }
+}
+
+extension Mock {
     public func response(error: NSError) -> MockResponseType {
         self.error = error
         return self
@@ -77,6 +105,7 @@ public protocol MockRequestType: class {
     func response(statusCode: Int, data: NSData?, header: [String: String]?) -> MockResponseType
     func response(statusCode: Int, json: AnyObject, header: [String: String]?) -> MockResponseType
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
+    func response(handler: Mock.ResponseHandler) -> MockResponseType
     func response(error: NSError) -> MockResponseType
 }
 
