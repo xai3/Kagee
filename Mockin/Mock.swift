@@ -14,6 +14,8 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias ResponseHandler = NSURLRequest -> Response
     
+    let errorDomain = "yukiasai.Mockin"
+    
     static var pool = [Mock]()
     
     var requestHandler: RequestHandler?
@@ -61,9 +63,9 @@ extension Mock {
 
 extension Mock {
     public func response(statusCode: Int, body: Body? = nil, header: Header? = nil) -> MockResponseType {
-        guard let url = request?.URL,
-            let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
-                fatalError()
+        guard let url = request?.URL, let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
+            let error = NSError(domain: errorDomain, code: 0, userInfo: [NSLocalizedFailureReasonErrorKey: "Response is not NSHTTPURLResponse.", NSLocalizedDescriptionKey: "Response is not NSHTTPURLResponse."])
+            return response(error)
         }
         
         guard let either = body?.data else {
