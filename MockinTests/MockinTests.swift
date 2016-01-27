@@ -150,6 +150,37 @@ class MockinTests: XCTestCase {
         waitForExpectationsWithTimeout(1000) { error in }
     }
     
+    func testFile() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/json_file"
+        let fileUrl = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "json")!
+        Mock.up().request(url: url).response(200, body: .File(fileUrl), header: nil)
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            guard let httpResponse = response as? NSHTTPURLResponse, let responseData = data else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 200)
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(responseData, options: .AllowFragments)
+                let dic = json as? [String: AnyObject]
+                XCTAssertNotNil(dic)
+                XCTAssertEqual(dic?["name"] as? String, "yukiasai")
+                XCTAssertEqual(dic?["age"] as? Int, 28)
+            } catch {
+                fatalError()
+            }
+            
+            ex.fulfill()
+            }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in }
+    }
+    
     func testURLConvertible() {
         let ex = expectationWithDescription("")
         
