@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias Header = [String: String]
+
 public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias ResponseHandler = NSURLRequest -> Response
@@ -58,7 +60,7 @@ extension Mock {
 }
 
 extension Mock {
-    public func response(statusCode: Int, body: Body? = nil, header: [String: String]? = nil) -> MockResponseType {
+    public func response(statusCode: Int, body: Body? = nil, header: Header? = nil) -> MockResponseType {
         guard let url = request?.URL,
             let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
                 fatalError()
@@ -98,7 +100,7 @@ public protocol MockType: class {
 }
 
 public protocol MockRequestType: class {
-    func response(statusCode: Int, body: Body?, header: [String: String]?) -> MockResponseType
+    func response(statusCode: Int, body: Body?, header: Header?) -> MockResponseType
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
     func response(error: NSError) -> MockResponseType
     func response(handler: Mock.ResponseHandler) -> MockResponseType
