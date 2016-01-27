@@ -150,4 +150,23 @@ class MockinTests: XCTestCase {
         waitForExpectationsWithTimeout(1000) { error in }
     }
     
+    func testURLConvertible() {
+        let ex = expectationWithDescription("")
+        
+        let url = NSURL(string: "http://aaa.aaa")!
+        Mock.up().request(url: url).response(200, body: nil, header: nil)
+        
+        let request = NSURLRequest(URL: url)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            guard let httpResponse = response as? NSHTTPURLResponse else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 200)
+            ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in }
+    }
+    
 }

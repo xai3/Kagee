@@ -20,3 +20,9 @@ extension String: URLConvertible {
         return ret
     }
 }
+
+extension NSURL: URLConvertible {
+    public var URL: NSURL {
+        return self
+    }
+}
