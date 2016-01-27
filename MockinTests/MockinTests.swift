@@ -32,7 +32,7 @@ class MockinTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/"
-        Mock.up().request(url: url).response(200, data: nil, header: nil)
+        Mock.up().request(url: url).response(200, body: nil, header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -53,7 +53,7 @@ class MockinTests: XCTestCase {
         
         let url = "/json"
         let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
-        Mock.up().request(url: url).response(200, json: json, header: nil)
+        Mock.up().request(url: url).response(200, body: .JSON(json), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())

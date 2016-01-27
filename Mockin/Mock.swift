@@ -58,20 +58,21 @@ extension Mock {
 }
 
 extension Mock {
-    public func response(statusCode: Int, data: NSData? = nil, header: [String: String]? = nil) -> MockResponseType {
+    public func response(statusCode: Int, body: Body? = nil, header: [String: String]? = nil) -> MockResponseType {
         guard let url = request?.URL,
             let res = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: header) else {
                 fatalError()
         }
-        return response(res, data: data)
-    }
-    
-    public func response(statusCode: Int, json: AnyObject, header: [String: String]? = nil) -> MockResponseType {
-        do {
-            let data = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
-            return response(statusCode, data: data, header: header)
-        } catch {
-            return response(error as NSError)
+        
+        guard let either = body?.data else {
+            return response(res, data: nil)
+        }
+        
+        switch either {
+        case .Left(let error):
+            return response(error)
+        case .Right(let data):
+            return response(res, data: data)
         }
     }
     
@@ -97,8 +98,7 @@ public protocol MockType: class {
 }
 
 public protocol MockRequestType: class {
-    func response(statusCode: Int, data: NSData?, header: [String: String]?) -> MockResponseType
-    func response(statusCode: Int, json: AnyObject, header: [String: String]?) -> MockResponseType
+    func response(statusCode: Int, body: Body?, header: [String: String]?) -> MockResponseType
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
     func response(error: NSError) -> MockResponseType
     func response(handler: Mock.ResponseHandler) -> MockResponseType
