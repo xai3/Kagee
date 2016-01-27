@@ -112,19 +112,6 @@ public enum Response {
     case Failure(NSError)
 }
 
-public protocol URLConvertible {
-    var URL: NSURL { get }
-}
-
-extension String: URLConvertible {
-    public var URL: NSURL {
-        guard let ret = NSURL(string: self) else {
-            fatalError()
-        }
-        return ret
-    }
-}
-
 public enum Method: String {
     case GET
     case POST
