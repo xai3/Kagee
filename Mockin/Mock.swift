@@ -8,13 +8,12 @@
 
 import Foundation
 
+internal let errorDomain = "yukiasai.Mockin"
 public typealias Header = [String: String]
 
 public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias ResponseHandler = NSURLRequest -> Response
-    
-    let errorDomain = "yukiasai.Mockin"
     
     static var pool = [Mock]()
     
