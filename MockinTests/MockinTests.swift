@@ -53,7 +53,7 @@ class MockinTests: XCTestCase {
         
         let url = "/json"
         let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
-        Mock.up().request(url: url).response(200, body: .JSON(json), header: nil)
+        Mock.up().request(url: url).response(200, body: JSON(json), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -155,7 +155,7 @@ class MockinTests: XCTestCase {
         
         let url = "/json_file"
         let fileUrl = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "json")!
-        Mock.up().request(url: url).response(200, body: .File(fileUrl), header: nil)
+        Mock.up().request(url: url).response(200, body: File(fileUrl), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
