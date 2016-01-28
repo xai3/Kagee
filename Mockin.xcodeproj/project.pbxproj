@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4632CD851C59D295001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
+		4632CD861C59D6AE001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
 		4662ACA81C588190000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
 		4662ACA91C58819F000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
 		4662ACAB1C5881AD000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
@@ -31,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4632CD841C59D295001082CF /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4662ACA71C588190000FDE36 /* Either.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		4662ACAA1C5881AD000FDE36 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 				4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */,
 				4662ACAA1C5881AD000FDE36 /* Body.swift */,
 				4662ACA71C588190000FDE36 /* Either.swift */,
+				4632CD841C59D295001082CF /* Network.swift */,
 				B6E941051C52816A00E853C0 /* Mockin.h */,
 				B6E941071C52816A00E853C0 /* Info.plist */,
 			);
@@ -227,6 +231,7 @@
 			files = (
 				B6E9411D1C52817B00E853C0 /* Mock.swift in Sources */,
 				4662ACA81C588190000FDE36 /* Either.swift in Sources */,
+				4632CD851C59D295001082CF /* Network.swift in Sources */,
 				B6E9411F1C52845700E853C0 /* MockProtocol.swift in Sources */,
 				4662ACAB1C5881AD000FDE36 /* Body.swift in Sources */,
 				4662ACAE1C5881FE000FDE36 /* URLConvertible.swift in Sources */,
@@ -239,6 +244,7 @@
 			files = (
 				4662ACAC1C5881B6000FDE36 /* Body.swift in Sources */,
 				4662ACA91C58819F000FDE36 /* Either.swift in Sources */,
+				4632CD861C59D6AE001082CF /* Network.swift in Sources */,
 				B6E941121C52816A00E853C0 /* MockinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

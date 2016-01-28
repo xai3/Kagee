@@ -27,6 +27,8 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     var response: Response? {
         return responseHandler?(request!)
     }
+    
+    var speed: Network.Speed?
 }
 
 extension Mock {
@@ -96,6 +98,13 @@ extension Mock {
     }
 }
 
+extension Mock {
+    public func speed(speed: Network.Speed) -> MockResponseType {
+        self.speed = speed
+        return self
+    }
+}
+
 public protocol MockType: class {
     func request(url urlConvertible: URLConvertible, method: Method) -> MockRequestType
     func request(request: NSURLRequest) -> MockRequestType
@@ -109,6 +118,7 @@ public protocol MockRequestType: class {
 }
 
 public protocol MockResponseType: class {
+    func speed(speed: Network.Speed) -> MockResponseType
 }
 
 public enum Response {
