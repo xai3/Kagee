@@ -14,9 +14,7 @@ public typealias Header = [String: String]
 public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias ResponseHandler = NSURLRequest -> Response
-    
-    static var pool = [Mock]()
-    
+   
     var requestHandler: RequestHandler?
     var request: NSURLRequest? {
         return requestHandler?()
@@ -33,14 +31,12 @@ public class Mock: MockType, MockRequestType, MockResponseType {
 extension Mock {
     public class func up() -> MockType {
         let mock = Mock()
-        pool += [mock]
+        MockPool.add(mock)
         return mock
     }
     
     public func down() {
-        if let index = (Mock.pool.indexOf { $0 === self }) {
-            Mock.pool.removeAtIndex(index)
-        }
+        MockPool.remove(self)
     }
 }
 

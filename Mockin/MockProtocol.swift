@@ -65,11 +65,7 @@ public class MockProtocol: NSURLProtocol {
     }
     
     private class func targetMock(request: NSURLRequest) -> Mock? {
-        return Mock.pool.filter {
-            let mockURL = $0.request?.URL
-            let requestURL = request.URL
-            return (mockURL?.host == requestURL?.host) && (mockURL?.path == requestURL?.path)
-            }.last
+        return MockPool.targetMock(request)
     }
 }
 

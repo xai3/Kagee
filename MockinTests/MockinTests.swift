@@ -21,11 +21,11 @@ class MockinTests: XCTestCase {
     }
     
     func testUpDown() {
-        let initialCount = Mock.pool.count
+        let initialCount = MockPool.mocks.count
         let mock = Mock.up()
-        XCTAssertEqual(Mock.pool.count, initialCount + 1)
+        XCTAssertEqual(MockPool.mocks.count, initialCount + 1)
         mock.down()
-        XCTAssertEqual(Mock.pool.count, initialCount)
+        XCTAssertEqual(MockPool.mocks.count, initialCount)
     }
     
     func testGetRequest() {
