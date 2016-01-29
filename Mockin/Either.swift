@@ -6,7 +6,7 @@
 //  Copyright © 2016 yukiasai. All rights reserved.
 //
 
-enum Either<L, R> {
+public enum Either<L, R> {
     case Left(L)
     case Right(R)
 }

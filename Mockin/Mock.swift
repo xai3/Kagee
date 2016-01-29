@@ -8,13 +8,12 @@
 
 import Foundation
 
+internal let errorDomain = "yukiasai.Mockin"
 public typealias Header = [String: String]
 
 public class Mock: MockType, MockRequestType, MockResponseType {
     public typealias RequestHandler = Void -> NSURLRequest
     public typealias ResponseHandler = NSURLRequest -> Response
-    
-    let errorDomain = "yukiasai.Mockin"
     
     static var pool = [Mock]()
     
@@ -32,7 +31,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
 }
 
 extension Mock {
-    public class func up() -> Mock {
+    public class func up() -> MockType {
         let mock = Mock()
         pool += [mock]
         return mock
@@ -46,7 +45,11 @@ extension Mock {
 }
 
 extension Mock {
-    public func request(url urlConvertible: URLConvertible, method: Method = .GET) -> MockRequestType {
+    public func request(url urlConvertible: URLConvertible) -> MockRequestType {
+        return request(url: urlConvertible, method: .GET)
+    }
+    
+    public func request(url urlConvertible: URLConvertible, method: Method) -> MockRequestType {
         let req = NSMutableURLRequest(URL: urlConvertible.URL)
         req.HTTPMethod = method.rawValue
         return request(req)
@@ -106,6 +109,8 @@ extension Mock {
 }
 
 public protocol MockType: class {
+    func down()
+    func request(url urlConvertible: URLConvertible) -> MockRequestType
     func request(url urlConvertible: URLConvertible, method: Method) -> MockRequestType
     func request(request: NSURLRequest) -> MockRequestType
 }

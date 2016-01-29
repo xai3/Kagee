@@ -10,11 +10,14 @@
 		4632CD851C59D295001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
 		4632CD861C59D6AE001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
 		4662ACA81C588190000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
-		4662ACA91C58819F000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
 		4662ACAB1C5881AD000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
-		4662ACAC1C5881B6000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
 		4662ACAE1C5881FE000FDE36 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */; };
 		4662ACB11C5896ED000FDE36 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 4662ACB01C5896ED000FDE36 /* test.json */; };
+		4662ACBD1C58BC12000FDE36 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411C1C52817B00E853C0 /* Mock.swift */; };
+		4662ACBE1C58BC12000FDE36 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411E1C52845700E853C0 /* MockProtocol.swift */; };
+		4662ACBF1C58BC12000FDE36 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */; };
+		4662ACC01C58BC12000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
+		4662ACC11C58BC12000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
 		B6E941061C52816A00E853C0 /* Mockin.h in Headers */ = {isa = PBXBuildFile; fileRef = B6E941051C52816A00E853C0 /* Mockin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6E9410D1C52816A00E853C0 /* Mockin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E941021C52816A00E853C0 /* Mockin.framework */; };
 		B6E941121C52816A00E853C0 /* MockinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E941111C52816A00E853C0 /* MockinTests.swift */; };
@@ -242,10 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4662ACAC1C5881B6000FDE36 /* Body.swift in Sources */,
-				4662ACA91C58819F000FDE36 /* Either.swift in Sources */,
-				4632CD861C59D6AE001082CF /* Network.swift in Sources */,
+				4662ACBE1C58BC12000FDE36 /* MockProtocol.swift in Sources */,
 				B6E941121C52816A00E853C0 /* MockinTests.swift in Sources */,
+				4662ACBD1C58BC12000FDE36 /* Mock.swift in Sources */,
+				4662ACBF1C58BC12000FDE36 /* URLConvertible.swift in Sources */,
+				4662ACC11C58BC12000FDE36 /* Either.swift in Sources */,
+				4662ACC01C58BC12000FDE36 /* Body.swift in Sources */,
+				4632CD861C59D6AE001082CF /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
