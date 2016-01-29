@@ -45,10 +45,18 @@ public class MockProtocol: NSURLProtocol {
             client?.URLProtocol(self, didFailWithError: error)
             return
         case .Success(let response, let data):
-            client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
+            // Data
             if let d = data {
                 client?.URLProtocol(self, didLoadData: d)
+                
+                // Delay
+                if let usec = mock.speed?.usec(UInt32(d.length)) {
+                    usleep(usec)
+                }
             }
+            
+            // Response
+            client?.URLProtocol(self, didReceiveResponse: response, cacheStoragePolicy: .NotAllowed)
             client?.URLProtocolDidFinishLoading(self)
         }
     }

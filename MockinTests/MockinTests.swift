@@ -259,4 +259,24 @@ class MockinTests: XCTestCase {
         waitForExpectationsWithTimeout(1000) { error in }
     }
     
+    func testNetworkSpeed() {
+        let ex = expectationWithDescription("")
+        
+        let url = "/network_speed"
+        let data = (0..<100_000).reduce("") { sum, _ in return sum + "0" }.dataUsingEncoding(NSUTF8StringEncoding)!
+        Mock.up().request(url: url).response(200, body: data, header: nil).speed(.Mobile3G)
+        
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        session.dataTaskWithRequest(request) { data, response, error in
+            guard let httpResponse = response as? NSHTTPURLResponse else {
+                fatalError()
+            }
+            XCTAssertEqual(httpResponse.statusCode, 200)
+            ex.fulfill()
+        }.resume()
+        
+        waitForExpectationsWithTimeout(1000) { error in }
+    }
+    
 }
