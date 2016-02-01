@@ -9,17 +9,17 @@
 import Foundation
 
 public protocol Body {
-    var data: Either<NSError, NSData> { get }
+    var data: ResponseData { get }
 }
 
 extension NSData: Body {
-    public var data: Either<NSError, NSData> {
-        return .Right(self)
+    public var data: ResponseData {
+        return .Data(self)
     }
 }
 
 extension String: Body {
-    public var data: Either<NSError, NSData> {
+    public var data: ResponseData {
         return Text(self).data
     }
 }
@@ -30,12 +30,12 @@ public class JSON: Body {
         self.object = object
     }
     
-    public var data: Either<NSError, NSData> {
+    public var data: ResponseData {
         do {
             let data = try NSJSONSerialization.dataWithJSONObject(object, options: .PrettyPrinted)
-            return .Right(data)
+            return .Data(data)
         } catch {
-            return .Left(error as NSError)
+            return .Error(error as NSError)
         }
     }
 }
@@ -53,12 +53,12 @@ public class File: Body {
         self.init(url)
     }
     
-    public var data: Either<NSError, NSData> {
+    public var data: ResponseData {
         do {
             let data = try NSData(contentsOfURL: url, options: .DataReadingUncached)
-            return .Right(data)
+            return .Data(data)
         } catch {
-            return .Left(error as NSError)
+            return .Error(error as NSError)
         }
     }
 }
@@ -71,13 +71,13 @@ public class Text: Body {
         self.encoding = encoding
     }
     
-    public var data: Either<NSError, NSData> {
+    public var data: ResponseData {
         if let data = string.dataUsingEncoding(encoding) {
-            return .Right(data)
+            return .Data(data)
         } else {
             let message = "Failed to encode the string."
             let error = NSError(domain: errorDomain, code: 0, userInfo: [NSLocalizedFailureReasonErrorKey: message, NSLocalizedDescriptionKey: message])
-            return .Left(error as NSError)
+            return .Error(error as NSError)
         }
     }
 }

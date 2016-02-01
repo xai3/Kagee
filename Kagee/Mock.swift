@@ -66,14 +66,14 @@ extension Mock {
             return response(error)
         }
         
-        guard let either = body?.data else {
+        guard let data = body?.data else {
             return response(res, data: nil)
         }
         
-        switch either {
-        case .Left(let error):
+        switch data {
+        case .Error(let error):
             return response(error)
-        case .Right(let data):
+        case .Data(let data):
             return response(res, data: data)
         }
     }
@@ -122,6 +122,11 @@ public protocol MockResponseType: class {
 public enum Response {
     case Success(NSURLResponse, NSData?)
     case Failure(NSError)
+}
+
+public enum ResponseData {
+    case Data(NSData)
+    case Error(NSError)
 }
 
 public enum Method: String {
