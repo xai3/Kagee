@@ -22,7 +22,7 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     
     var responseHandler: ResponseHandler?
     
-    var speed: Network.Speed?
+    var speed: Speed?
 }
 
 extension Mock {
@@ -95,7 +95,7 @@ extension Mock {
 }
 
 extension Mock {
-    public func speed(speed: Network.Speed) -> MockResponseType {
+    public func speed(speed: Speed) -> MockResponseType {
         self.speed = speed
         return self
     }
@@ -116,22 +116,6 @@ public protocol MockRequestType: class {
 }
 
 public protocol MockResponseType: class {
-    func speed(speed: Network.Speed) -> MockResponseType
+    func speed(speed: Speed) -> MockResponseType
 }
 
-public enum Response {
-    case Success(NSURLResponse, NSData?)
-    case Failure(NSError)
-}
-
-public enum ResponseData {
-    case Data(NSData)
-    case Error(NSError)
-}
-
-public enum Method: String {
-    case GET
-    case POST
-    case PUT
-    case DELETE
-}

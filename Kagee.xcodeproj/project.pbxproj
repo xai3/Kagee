@@ -12,7 +12,7 @@
 		46D632F81C5F400A005CFFF0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EB1C5F400A005CFFF0 /* Mock.swift */; };
 		46D632F91C5F400A005CFFF0 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EC1C5F400A005CFFF0 /* MockPool.swift */; };
 		46D632FA1C5F400A005CFFF0 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */; };
-		46D632FB1C5F400A005CFFF0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Network.swift */; };
+		46D632FB1C5F400A005CFFF0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Enums.swift */; };
 		46D632FC1C5F400A005CFFF0 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */; };
 		46D632FD1C5F400A005CFFF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D632F11C5F400A005CFFF0 /* Info.plist */; };
 		46D633001C5F4011005CFFF0 /* KageeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632F21C5F400A005CFFF0 /* KageeTests.swift */; };
@@ -20,7 +20,7 @@
 		46D633041C5F4015005CFFF0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EB1C5F400A005CFFF0 /* Mock.swift */; };
 		46D633051C5F4015005CFFF0 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EC1C5F400A005CFFF0 /* MockPool.swift */; };
 		46D633061C5F4015005CFFF0 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */; };
-		46D633071C5F4015005CFFF0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Network.swift */; };
+		46D633071C5F4015005CFFF0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Enums.swift */; };
 		46D633081C5F4015005CFFF0 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */; };
 		46D633091C5F401E005CFFF0 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 46D632F41C5F400A005CFFF0 /* test.json */; };
 		B6E9410D1C52816A00E853C0 /* Kagee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E941021C52816A00E853C0 /* Kagee.framework */; };
@@ -42,7 +42,7 @@
 		46D632EB1C5F400A005CFFF0 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		46D632EC1C5F400A005CFFF0 /* MockPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPool.swift; sourceTree = "<group>"; };
 		46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
-		46D632EE1C5F400A005CFFF0 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		46D632EE1C5F400A005CFFF0 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
 		46D632F11C5F400A005CFFF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46D632F21C5F400A005CFFF0 /* KageeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KageeTests.swift; sourceTree = "<group>"; };
@@ -73,13 +73,13 @@
 		46D632E71C5F400A005CFFF0 /* Kagee */ = {
 			isa = PBXGroup;
 			children = (
-				46D632E81C5F400A005CFFF0 /* Body.swift */,
-				46D632EA1C5F400A005CFFF0 /* Info.plist */,
 				46D632EB1C5F400A005CFFF0 /* Mock.swift */,
 				46D632EC1C5F400A005CFFF0 /* MockPool.swift */,
 				46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */,
-				46D632EE1C5F400A005CFFF0 /* Network.swift */,
+				46D632E81C5F400A005CFFF0 /* Body.swift */,
+				46D632EE1C5F400A005CFFF0 /* Enums.swift */,
 				46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */,
+				46D632EA1C5F400A005CFFF0 /* Info.plist */,
 			);
 			path = Kagee;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 			files = (
 				46D632FC1C5F400A005CFFF0 /* URLConvertible.swift in Sources */,
 				46D632F91C5F400A005CFFF0 /* MockPool.swift in Sources */,
-				46D632FB1C5F400A005CFFF0 /* Network.swift in Sources */,
+				46D632FB1C5F400A005CFFF0 /* Enums.swift in Sources */,
 				46D632F51C5F400A005CFFF0 /* Body.swift in Sources */,
 				46D632F81C5F400A005CFFF0 /* Mock.swift in Sources */,
 				46D632FA1C5F400A005CFFF0 /* MockProtocol.swift in Sources */,
@@ -249,7 +249,7 @@
 				46D633011C5F4015005CFFF0 /* Body.swift in Sources */,
 				46D633061C5F4015005CFFF0 /* MockProtocol.swift in Sources */,
 				46D633041C5F4015005CFFF0 /* Mock.swift in Sources */,
-				46D633071C5F4015005CFFF0 /* Network.swift in Sources */,
+				46D633071C5F4015005CFFF0 /* Enums.swift in Sources */,
 				46D633051C5F4015005CFFF0 /* MockPool.swift in Sources */,
 				46D633081C5F4015005CFFF0 /* URLConvertible.swift in Sources */,
 			);
