@@ -7,24 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4632CD851C59D295001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
-		4632CD861C59D6AE001082CF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632CD841C59D295001082CF /* Network.swift */; };
-		4662ACA81C588190000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
-		4662ACAB1C5881AD000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
-		4662ACAE1C5881FE000FDE36 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */; };
-		4662ACB11C5896ED000FDE36 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 4662ACB01C5896ED000FDE36 /* test.json */; };
-		4662ACBD1C58BC12000FDE36 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411C1C52817B00E853C0 /* Mock.swift */; };
-		4662ACBE1C58BC12000FDE36 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411E1C52845700E853C0 /* MockProtocol.swift */; };
-		4662ACBF1C58BC12000FDE36 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */; };
-		4662ACC01C58BC12000FDE36 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACAA1C5881AD000FDE36 /* Body.swift */; };
-		4662ACC11C58BC12000FDE36 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662ACA71C588190000FDE36 /* Either.swift */; };
-		46EC0C991C5AF66D008EB6D3 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC0C981C5AF66D008EB6D3 /* MockPool.swift */; };
-		46EC0C9A1C5AF72D008EB6D3 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC0C981C5AF66D008EB6D3 /* MockPool.swift */; };
-		B6E941061C52816A00E853C0 /* Mockin.h in Headers */ = {isa = PBXBuildFile; fileRef = B6E941051C52816A00E853C0 /* Mockin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6E9410D1C52816A00E853C0 /* Mockin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E941021C52816A00E853C0 /* Mockin.framework */; };
-		B6E941121C52816A00E853C0 /* MockinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E941111C52816A00E853C0 /* MockinTests.swift */; };
-		B6E9411D1C52817B00E853C0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411C1C52817B00E853C0 /* Mock.swift */; };
-		B6E9411F1C52845700E853C0 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E9411E1C52845700E853C0 /* MockProtocol.swift */; };
+		46D632F51C5F400A005CFFF0 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632E81C5F400A005CFFF0 /* Body.swift */; };
+		46D632F61C5F400A005CFFF0 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632E91C5F400A005CFFF0 /* Either.swift */; };
+		46D632F71C5F400A005CFFF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D632EA1C5F400A005CFFF0 /* Info.plist */; };
+		46D632F81C5F400A005CFFF0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EB1C5F400A005CFFF0 /* Mock.swift */; };
+		46D632F91C5F400A005CFFF0 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EC1C5F400A005CFFF0 /* MockPool.swift */; };
+		46D632FA1C5F400A005CFFF0 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */; };
+		46D632FB1C5F400A005CFFF0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Network.swift */; };
+		46D632FC1C5F400A005CFFF0 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */; };
+		46D632FD1C5F400A005CFFF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46D632F11C5F400A005CFFF0 /* Info.plist */; };
+		46D633001C5F4011005CFFF0 /* KageeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632F21C5F400A005CFFF0 /* KageeTests.swift */; };
+		46D633011C5F4015005CFFF0 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632E81C5F400A005CFFF0 /* Body.swift */; };
+		46D633021C5F4015005CFFF0 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632E91C5F400A005CFFF0 /* Either.swift */; };
+		46D633041C5F4015005CFFF0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EB1C5F400A005CFFF0 /* Mock.swift */; };
+		46D633051C5F4015005CFFF0 /* MockPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EC1C5F400A005CFFF0 /* MockPool.swift */; };
+		46D633061C5F4015005CFFF0 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */; };
+		46D633071C5F4015005CFFF0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EE1C5F400A005CFFF0 /* Network.swift */; };
+		46D633081C5F4015005CFFF0 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */; };
+		46D633091C5F401E005CFFF0 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 46D632F41C5F400A005CFFF0 /* test.json */; };
+		B6E9410D1C52816A00E853C0 /* Kagee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E941021C52816A00E853C0 /* Kagee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,20 +39,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4632CD841C59D295001082CF /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		4662ACA71C588190000FDE36 /* Either.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
-		4662ACAA1C5881AD000FDE36 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
-		4662ACB01C5896ED000FDE36 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
-		46EC0C981C5AF66D008EB6D3 /* MockPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPool.swift; sourceTree = "<group>"; };
-		B6E941021C52816A00E853C0 /* Mockin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mockin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6E941051C52816A00E853C0 /* Mockin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mockin.h; sourceTree = "<group>"; };
-		B6E941071C52816A00E853C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6E9410C1C52816A00E853C0 /* MockinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6E941111C52816A00E853C0 /* MockinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockinTests.swift; sourceTree = "<group>"; };
-		B6E941131C52816A00E853C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6E9411C1C52817B00E853C0 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
-		B6E9411E1C52845700E853C0 /* MockProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
+		46D632E81C5F400A005CFFF0 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		46D632E91C5F400A005CFFF0 /* Either.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		46D632EA1C5F400A005CFFF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46D632EB1C5F400A005CFFF0 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		46D632EC1C5F400A005CFFF0 /* MockPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPool.swift; sourceTree = "<group>"; };
+		46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
+		46D632EE1C5F400A005CFFF0 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
+		46D632F11C5F400A005CFFF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46D632F21C5F400A005CFFF0 /* KageeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KageeTests.swift; sourceTree = "<group>"; };
+		46D632F41C5F400A005CFFF0 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		B6E941021C52816A00E853C0 /* Kagee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kagee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E9410C1C52816A00E853C0 /* Kagee.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kagee.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,17 +66,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6E9410D1C52816A00E853C0 /* Mockin.framework in Frameworks */,
+				B6E9410D1C52816A00E853C0 /* Kagee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4662ACAF1C5896ED000FDE36 /* Resources */ = {
+		46D632E71C5F400A005CFFF0 /* Kagee */ = {
 			isa = PBXGroup;
 			children = (
-				4662ACB01C5896ED000FDE36 /* test.json */,
+				46D632E81C5F400A005CFFF0 /* Body.swift */,
+				46D632E91C5F400A005CFFF0 /* Either.swift */,
+				46D632EA1C5F400A005CFFF0 /* Info.plist */,
+				46D632EB1C5F400A005CFFF0 /* Mock.swift */,
+				46D632EC1C5F400A005CFFF0 /* MockPool.swift */,
+				46D632ED1C5F400A005CFFF0 /* MockProtocol.swift */,
+				46D632EE1C5F400A005CFFF0 /* Network.swift */,
+				46D632EF1C5F400A005CFFF0 /* URLConvertible.swift */,
+			);
+			path = Kagee;
+			sourceTree = "<group>";
+		};
+		46D632F01C5F400A005CFFF0 /* KageeTests */ = {
+			isa = PBXGroup;
+			children = (
+				46D632F11C5F400A005CFFF0 /* Info.plist */,
+				46D632F21C5F400A005CFFF0 /* KageeTests.swift */,
+				46D632F31C5F400A005CFFF0 /* Resources */,
+			);
+			path = KageeTests;
+			sourceTree = "<group>";
+		};
+		46D632F31C5F400A005CFFF0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				46D632F41C5F400A005CFFF0 /* test.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -84,8 +109,8 @@
 		B6E940F81C52816A00E853C0 = {
 			isa = PBXGroup;
 			children = (
-				B6E941041C52816A00E853C0 /* Mockin */,
-				B6E941101C52816A00E853C0 /* MockinTests */,
+				46D632E71C5F400A005CFFF0 /* Kagee */,
+				46D632F01C5F400A005CFFF0 /* KageeTests */,
 				B6E941031C52816A00E853C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,36 +118,10 @@
 		B6E941031C52816A00E853C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6E941021C52816A00E853C0 /* Mockin.framework */,
-				B6E9410C1C52816A00E853C0 /* MockinTests.xctest */,
+				B6E941021C52816A00E853C0 /* Kagee.framework */,
+				B6E9410C1C52816A00E853C0 /* Kagee.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B6E941041C52816A00E853C0 /* Mockin */ = {
-			isa = PBXGroup;
-			children = (
-				B6E9411C1C52817B00E853C0 /* Mock.swift */,
-				46EC0C981C5AF66D008EB6D3 /* MockPool.swift */,
-				B6E9411E1C52845700E853C0 /* MockProtocol.swift */,
-				4662ACAD1C5881FE000FDE36 /* URLConvertible.swift */,
-				4662ACAA1C5881AD000FDE36 /* Body.swift */,
-				4662ACA71C588190000FDE36 /* Either.swift */,
-				4632CD841C59D295001082CF /* Network.swift */,
-				B6E941051C52816A00E853C0 /* Mockin.h */,
-				B6E941071C52816A00E853C0 /* Info.plist */,
-			);
-			path = Mockin;
-			sourceTree = "<group>";
-		};
-		B6E941101C52816A00E853C0 /* MockinTests */ = {
-			isa = PBXGroup;
-			children = (
-				B6E941111C52816A00E853C0 /* MockinTests.swift */,
-				B6E941131C52816A00E853C0 /* Info.plist */,
-				4662ACAF1C5896ED000FDE36 /* Resources */,
-			);
-			path = MockinTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,16 +131,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6E941061C52816A00E853C0 /* Mockin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B6E941011C52816A00E853C0 /* Mockin */ = {
+		B6E941011C52816A00E853C0 /* Kagee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6E941161C52816A00E853C0 /* Build configuration list for PBXNativeTarget "Mockin" */;
+			buildConfigurationList = B6E941161C52816A00E853C0 /* Build configuration list for PBXNativeTarget "Kagee" */;
 			buildPhases = (
 				B6E940FD1C52816A00E853C0 /* Sources */,
 				B6E940FE1C52816A00E853C0 /* Frameworks */,
@@ -152,14 +150,14 @@
 			);
 			dependencies = (
 			);
-			name = Mockin;
+			name = Kagee;
 			productName = Mockin;
-			productReference = B6E941021C52816A00E853C0 /* Mockin.framework */;
+			productReference = B6E941021C52816A00E853C0 /* Kagee.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B6E9410B1C52816A00E853C0 /* MockinTests */ = {
+		B6E9410B1C52816A00E853C0 /* KageeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6E941191C52816A00E853C0 /* Build configuration list for PBXNativeTarget "MockinTests" */;
+			buildConfigurationList = B6E941191C52816A00E853C0 /* Build configuration list for PBXNativeTarget "KageeTests" */;
 			buildPhases = (
 				B6E941081C52816A00E853C0 /* Sources */,
 				B6E941091C52816A00E853C0 /* Frameworks */,
@@ -170,9 +168,9 @@
 			dependencies = (
 				B6E9410F1C52816A00E853C0 /* PBXTargetDependency */,
 			);
-			name = MockinTests;
+			name = KageeTests;
 			productName = MockinTests;
-			productReference = B6E9410C1C52816A00E853C0 /* MockinTests.xctest */;
+			productReference = B6E9410C1C52816A00E853C0 /* Kagee.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +193,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B6E940FC1C52816A00E853C0 /* Build configuration list for PBXProject "Mockin" */;
+			buildConfigurationList = B6E940FC1C52816A00E853C0 /* Build configuration list for PBXProject "Kagee" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -207,8 +205,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B6E941011C52816A00E853C0 /* Mockin */,
-				B6E9410B1C52816A00E853C0 /* MockinTests */,
+				B6E941011C52816A00E853C0 /* Kagee */,
+				B6E9410B1C52816A00E853C0 /* KageeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -218,6 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D632FD1C5F400A005CFFF0 /* Info.plist in Resources */,
+				46D632F71C5F400A005CFFF0 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4662ACB11C5896ED000FDE36 /* test.json in Resources */,
+				46D633091C5F401E005CFFF0 /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,13 +236,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6E9411D1C52817B00E853C0 /* Mock.swift in Sources */,
-				4662ACA81C588190000FDE36 /* Either.swift in Sources */,
-				4632CD851C59D295001082CF /* Network.swift in Sources */,
-				46EC0C991C5AF66D008EB6D3 /* MockPool.swift in Sources */,
-				B6E9411F1C52845700E853C0 /* MockProtocol.swift in Sources */,
-				4662ACAB1C5881AD000FDE36 /* Body.swift in Sources */,
-				4662ACAE1C5881FE000FDE36 /* URLConvertible.swift in Sources */,
+				46D632FC1C5F400A005CFFF0 /* URLConvertible.swift in Sources */,
+				46D632F61C5F400A005CFFF0 /* Either.swift in Sources */,
+				46D632F91C5F400A005CFFF0 /* MockPool.swift in Sources */,
+				46D632FB1C5F400A005CFFF0 /* Network.swift in Sources */,
+				46D632F51C5F400A005CFFF0 /* Body.swift in Sources */,
+				46D632F81C5F400A005CFFF0 /* Mock.swift in Sources */,
+				46D632FA1C5F400A005CFFF0 /* MockProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,14 +250,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4662ACBE1C58BC12000FDE36 /* MockProtocol.swift in Sources */,
-				B6E941121C52816A00E853C0 /* MockinTests.swift in Sources */,
-				4662ACBD1C58BC12000FDE36 /* Mock.swift in Sources */,
-				4662ACBF1C58BC12000FDE36 /* URLConvertible.swift in Sources */,
-				4662ACC11C58BC12000FDE36 /* Either.swift in Sources */,
-				46EC0C9A1C5AF72D008EB6D3 /* MockPool.swift in Sources */,
-				4662ACC01C58BC12000FDE36 /* Body.swift in Sources */,
-				4632CD861C59D6AE001082CF /* Network.swift in Sources */,
+				46D633001C5F4011005CFFF0 /* KageeTests.swift in Sources */,
+				46D633021C5F4015005CFFF0 /* Either.swift in Sources */,
+				46D633011C5F4015005CFFF0 /* Body.swift in Sources */,
+				46D633061C5F4015005CFFF0 /* MockProtocol.swift in Sources */,
+				46D633041C5F4015005CFFF0 /* Mock.swift in Sources */,
+				46D633071C5F4015005CFFF0 /* Network.swift in Sources */,
+				46D633051C5F4015005CFFF0 /* MockPool.swift in Sources */,
+				46D633081C5F4015005CFFF0 /* URLConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +266,7 @@
 /* Begin PBXTargetDependency section */
 		B6E9410F1C52816A00E853C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B6E941011C52816A00E853C0 /* Mockin */;
+			target = B6E941011C52816A00E853C0 /* Kagee */;
 			targetProxy = B6E9410E1C52816A00E853C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -369,11 +369,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Mockin/Info.plist;
+				INFOPLIST_FILE = Kagee/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.Mockin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.Kagee;
+				PRODUCT_NAME = Kagee;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -387,11 +387,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Mockin/Info.plist;
+				INFOPLIST_FILE = Kagee/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.Mockin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.Kagee;
+				PRODUCT_NAME = Kagee;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -399,27 +399,27 @@
 		B6E9411A1C52816A00E853C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = MockinTests/Info.plist;
+				INFOPLIST_FILE = KageeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.MockinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.KageeTests;
+				PRODUCT_NAME = Kagee;
 			};
 			name = Debug;
 		};
 		B6E9411B1C52816A00E853C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = MockinTests/Info.plist;
+				INFOPLIST_FILE = KageeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.MockinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = yukiasai.KageeTests;
+				PRODUCT_NAME = Kagee;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B6E940FC1C52816A00E853C0 /* Build configuration list for PBXProject "Mockin" */ = {
+		B6E940FC1C52816A00E853C0 /* Build configuration list for PBXProject "Kagee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6E941141C52816A00E853C0 /* Debug */,
@@ -428,7 +428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6E941161C52816A00E853C0 /* Build configuration list for PBXNativeTarget "Mockin" */ = {
+		B6E941161C52816A00E853C0 /* Build configuration list for PBXNativeTarget "Kagee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6E941171C52816A00E853C0 /* Debug */,
@@ -437,7 +437,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6E941191C52816A00E853C0 /* Build configuration list for PBXNativeTarget "MockinTests" */ = {
+		B6E941191C52816A00E853C0 /* Build configuration list for PBXNativeTarget "KageeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6E9411A1C52816A00E853C0 /* Debug */,

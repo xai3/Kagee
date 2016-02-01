@@ -1,15 +1,15 @@
 //
-//  MockinTests.swift
-//  MockinTests
+//  KageeTests.swift
+//  KageeTests
 //
 //  Created by yukiasai on 2016/01/23.
 //  Copyright © 2016年 yukiasai. All rights reserved.
 //
 
 import XCTest
-@testable import Mockin
+@testable import Kagee
 
-class MockinTests: XCTestCase {
+class KageeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -84,7 +84,7 @@ class MockinTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/error"
-        let error = NSError(domain: "yukiasai.Mockin", code: 1000, userInfo: nil)
+        let error = NSError(domain: "yukiasai.Kagee", code: 1000, userInfo: nil)
         Mock.up().request(url: url).response(error)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
@@ -93,7 +93,7 @@ class MockinTests: XCTestCase {
             XCTAssertNil(data)
             XCTAssertNil(response)
             XCTAssertNotNil(error)
-            XCTAssertEqual(error?.domain, "yukiasai.Mockin")
+            XCTAssertEqual(error?.domain, "yukiasai.Kagee")
             XCTAssertEqual(error?.code, 1000)
             ex.fulfill()
         }.resume()
@@ -132,7 +132,7 @@ class MockinTests: XCTestCase {
         
         let url = "/handler_failure"
         Mock.up().request(url: url).response { _ -> Response in
-            let error = NSError(domain: "yukiasai.Mockin", code: 2000, userInfo: nil)
+            let error = NSError(domain: "yukiasai.Kagee", code: 2000, userInfo: nil)
             return .Failure(error)
         }
         
@@ -142,7 +142,7 @@ class MockinTests: XCTestCase {
             XCTAssertNil(data)
             XCTAssertNil(response)
             XCTAssertNotNil(error)
-            XCTAssertEqual(error?.domain, "yukiasai.Mockin")
+            XCTAssertEqual(error?.domain, "yukiasai.Kagee")
             XCTAssertEqual(error?.code, 2000)
             ex.fulfill()
         }.resume()

@@ -1,6 +1,6 @@
 //
 //  Mock.swift
-//  Mockin
+//  Kagee
 //
 //  Created by yukiasai on 2016/01/23.
 //  Copyright © 2016年 yukiasai. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal let errorDomain = "yukiasai.Mockin"
+internal let errorDomain = "yukiasai.Kagee"
 public typealias Header = [String: String]
 
 public class Mock: MockType, MockRequestType, MockResponseType {

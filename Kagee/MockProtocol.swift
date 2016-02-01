@@ -1,6 +1,6 @@
 //
 //  MockProtocol.swift
-//  Mockin
+//  Kagee
 //
 //  Created by yukiasai on 2016/01/23.
 //  Copyright © 2016年 yukiasai. All rights reserved.

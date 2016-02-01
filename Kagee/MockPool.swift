@@ -1,6 +1,6 @@
 //
 //  MockPool.swift
-//  Mockin
+//  Kagee
 //
 //  Created by yukiasai on 1/29/16.
 //  Copyright © 2016 yukiasai. All rights reserved.
