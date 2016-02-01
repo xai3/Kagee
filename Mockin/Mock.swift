@@ -21,9 +21,6 @@ public class Mock: MockType, MockRequestType, MockResponseType {
     }
     
     var responseHandler: ResponseHandler?
-    var response: Response? {
-        return responseHandler?(request!)
-    }
     
     var speed: Network.Speed?
 }

@@ -35,8 +35,7 @@ public class MockProtocol: NSURLProtocol {
             fatalError()
         }
         
-        
-        guard let response = mock.response else {
+        guard let response = mock.responseHandler?(request) else {
             fatalError()
         }
         
