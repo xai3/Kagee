@@ -31,6 +31,7 @@ public enum Speed {
     case Mobile4G
     case Mobile3G
     case Edge
+    case Custom(bps: Double)
     
     var bps: Double? {
         switch self {
@@ -44,6 +45,8 @@ public enum Speed {
             return 1_000_000
         case .Edge:
             return 200_000
+        case .Custom(let bps):
+            return bps
         }
     }
     
