@@ -22,9 +22,9 @@ class KageeTests: XCTestCase {
     
     func testUpDown() {
         let initialCount = MockPool.mocks.count
-        let mock = Mock.up()
+        let mock = Mock.install().request(url: "/")
         XCTAssertEqual(MockPool.mocks.count, initialCount + 1)
-        mock.down()
+        mock.remove()
         XCTAssertEqual(MockPool.mocks.count, initialCount)
     }
     
@@ -32,7 +32,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/"
-        Mock.up().request(url: url).response(200, body: nil, header: nil)
+        Mock.install().request(url: url).response(200, body: nil, header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -53,7 +53,7 @@ class KageeTests: XCTestCase {
         
         let url = "/json"
         let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
-        Mock.up().request(url: url).response(200, body: JSON(json), header: nil)
+        Mock.install().request(url: url).response(200, body: JSON(json), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -85,7 +85,7 @@ class KageeTests: XCTestCase {
         
         let url = "/error"
         let error = NSError(domain: "yukiasai.Kagee", code: 1000, userInfo: nil)
-        Mock.up().request(url: url).response(error)
+        Mock.install().request(url: url).response(error)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -106,7 +106,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/handler_success"
-        Mock.up().request(url: url).response { request -> Response in
+        Mock.install().request(url: url).response { request -> Response in
             let response = NSHTTPURLResponse(URL: request.URL!, statusCode: 200, HTTPVersion: nil, headerFields: nil)!
             let data = "12345".dataUsingEncoding(NSUTF8StringEncoding)
             return .Success(response, data)
@@ -131,7 +131,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/handler_failure"
-        Mock.up().request(url: url).response { _ -> Response in
+        Mock.install().request(url: url).response { _ -> Response in
             let error = NSError(domain: "yukiasai.Kagee", code: 2000, userInfo: nil)
             return .Failure(error)
         }
@@ -155,7 +155,7 @@ class KageeTests: XCTestCase {
         
         let url = "/json_file"
         let fileUrl = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "json")!
-        Mock.up().request(url: url).response(200, body: File(fileUrl), header: nil)
+        Mock.install().request(url: url).response(200, body: File(fileUrl), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -186,7 +186,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/plain_text"
-        Mock.up().request(url: url).response(200, body: "{\"name\": \"yukiasai\", \"age\": 28}", header: nil)
+        Mock.install().request(url: url).response(200, body: "{\"name\": \"yukiasai\", \"age\": 28}", header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -215,7 +215,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/plain_text"
-        Mock.up().request(url: url).response(200, body: Text("{\"name\": \"yukiasai\", \"age\": 28}"), header: nil)
+        Mock.install().request(url: url).response(200, body: Text("{\"name\": \"yukiasai\", \"age\": 28}"), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -244,7 +244,7 @@ class KageeTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = NSURL(string: "http://aaa.aaa")!
-        Mock.up().request(url: url).response(200, body: nil, header: nil)
+        Mock.install().request(url: url).response(200, body: nil, header: nil)
         
         let request = NSURLRequest(URL: url)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -264,7 +264,7 @@ class KageeTests: XCTestCase {
         
         let url = "/network_speed"
         let data = (0..<100_000).reduce("") { sum, _ in return sum + "0" }.dataUsingEncoding(NSUTF8StringEncoding)!
-        Mock.up().request(url: url).response(200, body: data, header: nil).speed(.Mobile3G)
+        Mock.install().request(url: url).response(200, body: data, header: nil).speed(.Mobile3G)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -284,7 +284,7 @@ class KageeTests: XCTestCase {
         
         let url = "/custom_speed"
         let data = (0..<1_000).reduce("") { sum, _ in return sum + "0" }.dataUsingEncoding(NSUTF8StringEncoding)!
-        Mock.up().request(url: url).response(200, body: data, header: nil).speed(.Custom(bps: 100_000))
+        Mock.install().request(url: url).response(200, body: data, header: nil).speed(.Custom(bps: 100_000))
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())

@@ -9,35 +9,36 @@
 import Foundation
 
 internal let errorDomain = "yukiasai.Kagee"
+
 public typealias Header = [String: String]
+public typealias RequestHandler = Void -> NSURLRequest
+public typealias ResponseHandler = NSURLRequest -> Response
 
 public class Mock: MockType, MockRequestType, MockResponseType {
-    public typealias RequestHandler = Void -> NSURLRequest
-    public typealias ResponseHandler = NSURLRequest -> Response
-   
     var requestHandler: RequestHandler?
+    var responseHandler: ResponseHandler?
+    var speed: Speed?
+    
+    init(@noescape closure: Mock -> Void) {
+        closure(self)
+    }
+    
     var request: NSURLRequest? {
         return requestHandler?()
     }
-    
-    var responseHandler: ResponseHandler?
-    
-    var speed: Speed?
 }
 
 extension Mock {
-    public class func up() -> MockType {
-        let mock = Mock()
-        MockPool.add(mock)
-        return mock
+    public class func install() -> MockType {
+        return Mock {
+            MockPool.add($0)
+        }
     }
     
-    public func down() {
+    public func remove() {
         MockPool.remove(self)
     }
-}
-
-extension Mock {
+    
     public func request(url urlConvertible: URLConvertible) -> MockRequestType {
         return request(url: urlConvertible, method: .GET)
     }
@@ -102,20 +103,22 @@ extension Mock {
 }
 
 public protocol MockType: class {
-    func down()
+    static func install() -> MockType
+    func remove()
     func request(url urlConvertible: URLConvertible) -> MockRequestType
     func request(url urlConvertible: URLConvertible, method: Method) -> MockRequestType
     func request(request: NSURLRequest) -> MockRequestType
+    func request(handler: RequestHandler) -> MockRequestType
 }
 
-public protocol MockRequestType: class {
+public protocol MockRequestType: class, MockType {
     func response(statusCode: Int, body: Body?, header: Header?) -> MockResponseType
     func response(response: NSURLResponse, data: NSData?) -> MockResponseType
     func response(error: NSError) -> MockResponseType
-    func response(handler: Mock.ResponseHandler) -> MockResponseType
+    func response(handler: ResponseHandler) -> MockResponseType
 }
 
-public protocol MockResponseType: class {
+public protocol MockResponseType: class, MockType {
     func speed(speed: Speed) -> MockResponseType
 }
 

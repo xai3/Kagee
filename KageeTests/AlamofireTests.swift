@@ -25,7 +25,7 @@ class AlamofireTests: XCTestCase {
         let ex = expectationWithDescription("")
         
         let url = "/"
-        Mock.up().request(url: url).response(200, body: nil, header: nil)
+        Mock.install().request(url: url).response(200, body: nil, header: nil)
         Alamofire.request(.GET, url).response { _, response, _, _ in
             XCTAssertEqual(response?.statusCode, 200)
             ex.fulfill()
@@ -39,7 +39,7 @@ class AlamofireTests: XCTestCase {
         
         let url = "/json"
         let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
-        Mock.up().request(url: url).response(200, body: JSON(json), header: nil)
+        Mock.install().request(url: url).response(200, body: JSON(json), header: nil)
         Alamofire.request(.GET, url).responseJSON { response in
             switch response.result {
             case .Success(let json):
