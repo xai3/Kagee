@@ -14,10 +14,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-You can create a stub with the `Mock.up()`. And using `request` and `response` to defined the content.
+You can create a stub with the `Mock.install()`. And using `request` and `response` to defined the content.
 
 ``` swift
-Mock.up().request(url: "/").response(200, body: nil, header: nil)
+Mock.install().request(url: "/").response(200, body: nil, header: nil)
 ```
 
 Write a network request using the usual `NSURLSession` or `Alamofire`.
@@ -48,14 +48,14 @@ Pass the `JSON` to the `body`.
 
 ``` swift
 let json: [String: AnyObject] = ["name": "yukiasai", "age": 28]
-Mock.up().request(url: url).response(200, body: JSON(json), header: nil)
+Mock.install().request(url: url).response(200, body: JSON(json), header: nil)
 ```
 
 ### Stub data from file
 
 ``` swift
 let fileUrl: NSURL = NSURL(string: "path/to/file")!
-Mock.up().request(url: url).response(200, body: File(fileUrl), header: nil)
+Mock.install().request(url: url).response(200, body: File(fileUrl), header: nil)
 ```
 
 ### Response handler
@@ -63,7 +63,7 @@ Mock.up().request(url: url).response(200, body: File(fileUrl), header: nil)
 You can also write the `responseHandler`.
 
 ``` swift
-Mock.up().request(url: someUrl).response { request -> Response in
+Mock.install().request(url: someUrl).response { request -> Response in
     let response = NSHTTPURLResponse(URL: request.URL!, statusCode: 200, HTTPVersion: nil, headerFields: nil)!
     let data = "12345".dataUsingEncoding(NSUTF8StringEncoding)
     return .Success(response, data)
@@ -76,7 +76,7 @@ Mock.up().request(url: someUrl).response { request -> Response in
 You can control speed by using the `speed()`. Speed will change depending on the size of the http-body data.
 
 ``` swift
-Mock.up().request(url: url).response(200, body: File(fileUrl), header: nil).speed(.Wifi)
+Mock.install().request(url: url).response(200, body: File(fileUrl), header: nil).speed(.Wifi)
 ```
 
 It supports the following speed.
