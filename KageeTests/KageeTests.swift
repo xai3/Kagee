@@ -155,7 +155,7 @@ class KageeTests: XCTestCase {
         
         let url = "/json_file"
         let fileUrl = NSBundle(forClass: self.dynamicType).URLForResource("test", withExtension: "json")!
-        Mock.install().request(url: url).response(200, body: File(fileUrl), header: nil)
+        Mock.install().request(url: url).response(200, body: File(url: fileUrl), header: nil)
         
         let request = NSURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
