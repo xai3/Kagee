@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MockPool {
+class MockPool {
     static var mocks = [Mock]()
     
     class func add(mock: Mock) {
