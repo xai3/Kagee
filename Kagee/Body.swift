@@ -42,15 +42,9 @@ public class JSON: Body {
 
 public class File: Body {
     let url: NSURL
-    public init(_ url: NSURL) {
-        self.url = url
-    }
     
-    public convenience init(string: String) {
-        guard let url = NSURL(string: string) else {
-            fatalError()
-        }
-        self.init(url)
+    public init(url urlConvertible: URLConvertible) {
+        self.url = urlConvertible.URL
     }
     
     public var data: ResponseData {
