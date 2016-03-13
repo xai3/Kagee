@@ -16,7 +16,7 @@ public class MockProtocol: NSURLProtocol {
             
             let configClass = NSURLSessionConfiguration.self
             let originalMethod = class_getClassMethod(configClass, Selector("defaultSessionConfiguration"))
-            let swizzledMethod = class_getClassMethod(configClass, Selector("mockSessionCongiguration"))
+            let swizzledMethod = class_getClassMethod(configClass, Selector("mockSessionConfiguration"))
             method_exchangeImplementations(originalMethod, swizzledMethod)
         }
     }
@@ -69,8 +69,8 @@ public class MockProtocol: NSURLProtocol {
 }
 
 extension NSURLSessionConfiguration {
-    class func mockSessionCongiguration() -> NSURLSessionConfiguration {
-        let config = mockSessionCongiguration()
+    class func mockSessionConfiguration() -> NSURLSessionConfiguration {
+        let config = mockSessionConfiguration()
         config.protocolClasses = ([MockProtocol.self] as [AnyClass]) + (config.protocolClasses ?? [])
         return config
     }
